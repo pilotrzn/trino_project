@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=
+sources:
+  - name: air-2024
+    description: Данные об авиаперелетах
+    database: air-2024
+    schema: postgres_air
+    tables:
+      - name: account
+        description: accounts passenger
+      - name: aircraft
+      - name: airport
+      - name: booking
+        columns:
+          - name: booking_id
+          - name: booking_ref
+          - name: booking_name
+          - name: account_id
+          - name: email
+          - name: phone
+          - name: update_ts
+          - name: price
+        # freshness: 
+        #   warn_after: {count: 1000, period: day}
+        #   error_after: {count: 1000, period: day}
+        #   filter: EXTRACT (DAY FROM (CAST(current_timestamp AS date) - CAST(update_ts AS date))) < 310
+        # loaded_at_field: update_ts
