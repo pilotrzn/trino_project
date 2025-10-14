@@ -19,5 +19,6 @@ select
 from 
   {{ source('air-2024', 'booking') }}
 {% if is_incremental() %}
-  where cast('0x' || booking_ref as bigint) > (select max(cast('0x' || booking_ref as bigint)) from {{ this }})
+  where booking_ref > (select max(booking_ref) from {{ this }})
 {% endif %}
+limit 1000

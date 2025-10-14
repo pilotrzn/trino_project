@@ -24,3 +24,10 @@ sources:
         #   error_after: {count: 1000, period: day}
         #   filter: EXTRACT (DAY FROM (CAST(current_timestamp AS date) - CAST(update_ts AS date))) < 310
         # loaded_at_field: update_ts
+
+models:
+  - name: stg_air__airport
+    config:
+      materialized: table
+      tags: ['stg_air']
+  
