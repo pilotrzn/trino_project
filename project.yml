@@ -1,0 +1,18 @@
+trino_project:
+  outputs:
+
+    dev:
+      type: trino
+      method: ldap  # optional, one of {none | ldap | kerberos}
+      user: masteradmin
+      password: MasterPassword  # required if method is ldap or kerberos
+      database: iceberg
+      host: 172.35.1.51
+      port: 30443
+      schema: air
+      threads: 4
+      http_scheme: https
+      require_certificate_validation: true
+      cert: /home/aavdonin/myCA.crt
+
+  target: dev

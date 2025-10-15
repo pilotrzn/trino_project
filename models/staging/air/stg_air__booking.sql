@@ -17,8 +17,11 @@ select
   update_ts, 
   price,CAST(update_ts AS date) AS update_date
 from 
-  {{ source('air-2024', 'booking') }}
+  {{ source('air-2024', 'booking') }} as src
 {% if is_incremental() %}
-  where booking_ref > (select max(booking_ref) from {{ this }})
+  where NOT EXISTS (
+  	SELECT 1
+  	FROM {{ this }} stg_air
+  	WHERE src.booking_id = stg_air.booking_id
+  	)
 {% endif %}
-limit 1000
