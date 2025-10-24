@@ -1,6 +1,6 @@
 trino_project:
+  target: dev
   outputs:
-
     dev:
       type: trino
       method: ldap  # optional, one of {none | ldap | kerberos}
@@ -15,4 +15,6 @@ trino_project:
       require_certificate_validation: true
       cert: /home/aavdonin/myCA.crt
 
-  target: dev
+    prod:
+      type: trino
+      method: ldap
